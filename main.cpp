@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-using namespace std; 
+using namespace std;
 
 
 class course{
@@ -8,24 +8,24 @@ class course{
 private:
 	bool only1;
 	bool MR;
-	bool lab; 
+	bool lab;
 
 	int offerings;
-	vector <course> off; 
-	int time; 
-	bool special_length; 
-	double duration; 
-	int credits; 
-	int CRN; 
+	vector <course> off;
+	int time;
+	bool special_length;
+	double duration;
+	int credits;
+	int CRN;
 public:
 
 	void time_filler()
 	{
-		cout<<"please pick the correct starting time of this instant of the course \n"; 
+		cout<<"please pick the correct starting time of this instant of the course \n";
 		cout<<"1-	8:30\n2-	10:00\n3-	11:30\n4-	2:00\n5-	3:30\n6-	5:00\n7-	6:15\n";
 		cin >> time;
 
-		cout<<"is this course longer of shorter than 1 hour and 15 minutes? (1=yes 	0=No)\n";
+		cout<<"is this course longer or shorter than 1 hour and 15 minutes? (1=yes 	0=No)\n";
 		cin >> special_length;
 
 		if(special_length)
@@ -40,22 +40,23 @@ public:
 	{
 		if(offerings == 0)
 		{	cout <<" you little piece of shit!! what do you want me to do for you? email the department?\n";
-			
-			return; 
+
+			return;
 		}
 
 		if(offerings == 1)
 		{
-			only1 = true; 
+			only1 = true;
 
 		}
 
-		else 
+		else
 		{
-			only1 = false; 
+			only1 = false;
 			//should then create a vector or a dynamic array of the size of the courses and start filling it one by one
+			course **array = new course*[offerings];
 			for (int i=0; i<offerings; i++)
-				off.push_back()
+				array[i] = new course();
 		}
 
 	}
@@ -64,11 +65,11 @@ public:
 	void filler()
 	{
 		cout<<"how many offerings are availble for this course?\n";
-		cin >> offerings; 
-		
+		cin >> offerings;
+
 			offerings_handler();
 
-		
+
 	}
 
 };
@@ -85,7 +86,8 @@ int main()
 
 	for(int i=0; i<num_of_courses; i++)
 	{
-
+		course c1;
+		C.push_back(c1);
 	}
 
 
