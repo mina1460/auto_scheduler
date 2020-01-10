@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
 
 
@@ -17,11 +18,13 @@ private:
 	double duration;
 	int credits;
 	int CRN;
+	string name; 
+	string instructor; 
 public:
 
 	void time_filler()
 	{
-		cout<<"please pick the correct starting time of this instant of the course \n";
+		cout<<"please pick the correct starting time of this section of the course \n";
 		cout<<"1-	8:30\n2-	10:00\n3-	11:30\n4-	2:00\n5-	3:30\n6-	5:00\n7-	6:15\n";
 		cin >> time;
 
@@ -36,6 +39,7 @@ public:
 		else duration = 1.25;
 
 	}
+
 	void offerings_handler()
 	{
 		if(offerings == 0)
@@ -54,9 +58,9 @@ public:
 		{
 			only1 = false;
 			//should then create a vector or a dynamic array of the size of the courses and start filling it one by one
-			course **array = new course*[offerings];
+			course **sections = new course*[offerings];
 			for (int i=0; i<offerings; i++)
-				array[i] = new course();
+				sections[i] = new course();
 		}
 
 	}
@@ -82,8 +86,7 @@ int main()
 	cout<<"please enter the number of courses that you want to register\n";
 	cin >> num_of_courses;
 
-	std::vector <course> C;
-
+	course 
 	for(int i=0; i<num_of_courses; i++)
 	{
 		course c1;
