@@ -1,98 +1,104 @@
+
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
+
 using namespace std;
 
 
+class section{
+    private:
+        std::string instructor;
+        int section_number;
+        int CRN;
+        double time;
+        string location;
+        bool days; //0 for UW and 1 for MR
+    public:
+
+        section(){
+           std::cin.ignore();
+            cout<<"Enter the name of the instructor: ";
+            std::getline (std::cin, instructor);
+
+            cout<<"Enter the section number: ";
+            cin >> section_number;
+
+            cout<<"\nEnter the CRN: ";
+            cin >> CRN;
+
+            cout<<"\n choose a time \n1-    8:30\n2-    10:00\n3-    11:30\n4-    2:00\n5-    3:30\n6-    5:00\n7-    6:15\n";
+            cin >> time;
+        }
+				double getTime(){
+					return time;
+				}
+				string getInstructor(){
+					return instructor;
+				}
+};
+
+
 class course{
+    private:
+        bool only_one;
+        bool has_a_lab;
+        bool special_length;
+        int number_of_sections;
+        string course_name;
+        double duration;
+        section **array;
+    public:
+course(){
+	cout << "Please enter course name: " << endl;
+	std::cin.ignore();
+	std::getline(std::cin,course_name);
+	cout << "Does this course have only one section: " << endl << "1 for Yes \n0 for No" << endl;
+	cin >> only_one;
+	cout << "Is this course of special special_length: " << endl <<  "1 for Yes \n0 for No" << endl;
+	cin >> has_a_lab;
+	cout << "Does this course have a lab: " << endl << "1 for Yes \n0 for No" << endl;
+	cin >> has_a_lab;
+	cout << "How many sections does this course have \n";
+	cin >> number_of_sections;
+	createSections();
 
-private:
-	bool only1;
-	bool MR;
-	bool lab;
+}
+void createSections () {
+  array = new section*[number_of_sections];
+  for(int i=0; i<number_of_sections; i++)
+  array[i] = new section();
+}
 
-	int offerings;
-	vector <course> off;
-	int time;
-	bool special_length;
-	double duration;
-	int credits;
-	int CRN;
-	string name; 
-	string instructor; 
-public:
-
-	void time_filler()
-	{
-		cout<<"please pick the correct starting time of this section of the course \n";
-		cout<<"1-	8:30\n2-	10:00\n3-	11:30\n4-	2:00\n5-	3:30\n6-	5:00\n7-	6:15\n";
-		cin >> time;
-
-		cout<<"is this course longer or shorter than 1 hour and 15 minutes? (1=yes 	0=No)\n";
-		cin >> special_length;
-
-		if(special_length)
-		{
-			cout<<"\n please enter the duration of the course as a decimal: ";
-			cin >> duration;
-		}
-		else duration = 1.25;
-
-	}
-
-	void offerings_handler()
-	{
-		if(offerings == 0)
-		{	cout <<" you little piece of shit!! what do you want me to do for you? email the department?\n";
-
-			return;
-		}
-
-		if(offerings == 1)
-		{
-			only1 = true;
-
-		}
-
-		else
-		{
-			only1 = false;
-			//should then create a vector or a dynamic array of the size of the courses and start filling it one by one
-			course **sections = new course*[offerings];
-			for (int i=0; i<offerings; i++)
-				sections[i] = new course();
-		}
+void printCourse(){
+	cout << "---------------------------" << course_name << "---------------------------" << endl;
+	cout << "Number of sections: " << number_of_sections << endl;
+	for (int i=0; i< number_of_sections; i++){
+		cout << "Section number " << i << " :" << endl;
+		cout << "Time is: " << array[i]->getTime() << endl;
+		cout << "Instructor is: "<< array[i]->getInstructor() << endl;
 
 	}
 
-
-	void filler()
-	{
-		cout<<"how many offerings are availble for this course?\n";
-		cin >> offerings;
-
-			offerings_handler();
-
-
-	}
+}
 
 };
 
 
+
+
 int main()
 {
-	int num_of_courses = 0;
+    int number_of_courses = 0;
 
-	cout<<"please enter the number of courses that you want to register\n";
-	cin >> num_of_courses;
+    cout<<"please enter the number of courses that you want to take: ";
+    cin >> number_of_courses;
 
-	course 
-	for(int i=0; i<num_of_courses; i++)
-	{
-		course c1;
-		C.push_back(c1);
-	}
+    course ** coursesArray = new course*[number_of_courses];
+		for(int i=0; i<number_of_courses; i++){
+			coursesArray[i] = new course();
+		}
+		coursesArray[0]->printCourse();
 
-
-	return 0;
+    return 0;
 }
